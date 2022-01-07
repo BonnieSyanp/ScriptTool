@@ -1,0 +1,213 @@
+
+
+
+
+if game:GetService("CoreGui"):FindFirstChild("Tool") then
+	game:GetService("CoreGui"):FindFirstChild("Tool"):Destroy()
+end
+
+
+
+
+function dragify(Frame)
+    dragToggle = nil
+    dragSpeed = .25 -- You can edit this.
+    dragInput = nil
+    dragStart = nil
+    dragPos = nil
+    
+    function updateInput(input)
+    Delta = input.Position - dragStart
+    Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+    game:GetService("TweenService"):Create(Frame, TweenInfo.new(.25), {Position = Position}):Play()
+    end
+    
+    Frame.InputBegan:Connect(function(input)
+    if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
+    dragToggle = true
+    dragStart = input.Position
+    startPos = Frame.Position
+    input.Changed:Connect(function()
+    if (input.UserInputState == Enum.UserInputState.End) then
+    dragToggle = false
+    end
+    end)
+    end
+    end)
+    
+    Frame.InputChanged:Connect(function(input)
+    if (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+    dragInput = input
+    end
+    end)
+    
+    game:GetService("UserInputService").InputChanged:Connect(function(input)
+    if (input == dragInput and dragToggle) then
+    updateInput(input)
+    end
+    end)
+end
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Frame_2 = Instance.new("Frame")
+local TextButton = Instance.new("TextButton")
+local TextButton_2 = Instance.new("TextButton")
+local TextButton_3 = Instance.new("TextButton")
+local TextButton_4 = Instance.new("TextButton")
+local TextLabel = Instance.new("TextLabel")
+local TextLabel_2 = Instance.new("TextLabel")
+local TextLabel_3 = Instance.new("TextLabel")
+local Frame_3 = Instance.new("Frame")
+
+ScreenGui.Name = "Tool"
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.349696964, 0, 0.226993859, 0)
+Frame.Size = UDim2.new(0, 164, 0, 391)
+
+
+	local dragSpeedd = Instance.new("UICorner")
+
+	dragSpeedd.CornerRadius = UDim.new(0, 10)
+	dragSpeedd.Name = "Main_UiConner"
+	dragSpeedd.Parent = Frame
+
+dragify(Frame)
+
+TextLabel_2.Parent = Frame
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.Position = UDim2.new(0, 0, 0.0179028139, 0)
+TextLabel_2.Size = UDim2.new(0, 162, 0, 41)
+TextLabel_2.Font = Enum.Font.GothamBold
+TextLabel_2.Text = "Script Tool"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextSize = 30.000
+
+TextLabel_3.Parent = Frame
+TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_3.BackgroundTransparency = 1.000
+TextLabel_3.Position = UDim2.new(0, 0, 0.122762151, 0)
+TextLabel_3.Size = UDim2.new(0, 162, 0, 32)
+TextLabel_3.Font = Enum.Font.GothamBold
+TextLabel_3.Text = "By:Synap1_x"
+TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_3.TextSize = 20.000
+
+Frame_2.Parent = Frame
+Frame_2.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Frame_2.BorderSizePixel = 0
+Frame_2.Position = UDim2.new(1, 0, 0, 0)
+Frame_2.Size = UDim2.new(0, 508, 0, 391)
+
+	local d = Instance.new("UICorner")
+
+	d.CornerRadius = UDim.new(0, 10)
+	d.Name = "Main_UiConner"
+	d.Parent = Frame_2
+	
+TextButton.Parent = Frame_2
+TextButton.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+TextButton.Position = UDim2.new(0.0885826796, 0, 0.204603583, 0)
+TextButton.Size = UDim2.new(0, 417, 0, 50)
+TextButton.Font = Enum.Font.GothamBold
+TextButton.Text = "Copy CFrame"
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.TextSize = 30.000
+
+
+	local asdsadasdd = Instance.new("UICorner")
+
+	asdsadasdd.CornerRadius = UDim.new(0, 10)
+	asdsadasdd.Name = "Main_UiConner"
+	asdsadasdd.Parent = TextButton
+	
+
+TextButton.MouseButton1Click:Connect(function()
+    setclipboard(tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.Position))
+end)
+
+TextButton_2.Parent = Frame_2
+TextButton_2.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+TextButton_2.Position = UDim2.new(0.0885826796, 0, 0.401534557, 0)
+TextButton_2.Size = UDim2.new(0, 417, 0, 50)
+TextButton_2.Font = Enum.Font.GothamBold
+TextButton_2.Text = "Simple Spy"
+TextButton_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_2.TextSize = 30.000
+
+	local sdsdsdsdsds = Instance.new("UICorner")
+
+	sdsdsdsdsds.CornerRadius = UDim.new(0, 10)
+	sdsdsdsdsds.Name = "Main_UiConner"
+	sdsdsdsdsds.Parent = TextButton_2
+	
+
+TextButton_2.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet("https://github.com/exxtremestuffs/SimpleSpySource/raw/master/SimpleSpy.lua"))()
+end)
+
+TextButton_3.Parent = Frame_2
+TextButton_3.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+TextButton_3.Position = UDim2.new(0.0885826796, 0, 0.820971906, 0)
+TextButton_3.Size = UDim2.new(0, 417, 0, 50)
+TextButton_3.Font = Enum.Font.GothamBold
+TextButton_3.Text = "Destroy Gui"
+TextButton_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_3.TextSize = 30.000
+
+
+	local sdsdsdsdsadqw = Instance.new("UICorner")
+
+	sdsdsdsdsadqw.CornerRadius = UDim.new(0, 10)
+	sdsdsdsdsadqw.Name = "Main_UiConner"
+	sdsdsdsdsadqw.Parent = TextButton_3
+
+TextButton_3.MouseButton1Click:Connect(function()
+if game:GetService("CoreGui"):FindFirstChild("Tool") then
+	game:GetService("CoreGui"):FindFirstChild("Tool"):Destroy()
+end
+end)
+
+TextButton_4.Parent = Frame_2
+TextButton_4.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+TextButton_4.Position = UDim2.new(0.0885826796, 0, 0.621483445, 0)
+TextButton_4.Size = UDim2.new(0, 417, 0, 50)
+TextButton_4.Font = Enum.Font.GothamBold
+TextButton_4.Text = "Re Join"
+TextButton_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_4.TextSize = 30.000
+	local asdsadxdasdsawdfg = Instance.new("UICorner")
+
+	asdsadxdasdsawdfg.CornerRadius = UDim.new(0, 10)
+	asdsadxdasdsawdfg.Name = "Main_UiConner"
+	asdsadxdasdsawdfg.Parent = TextButton_4
+	
+TextButton_4.MouseButton1Click:Connect(function()
+ game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").localPlayer)
+end)
+
+
+TextLabel.Parent = Frame_2
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(0.0885826796, 0, 0.0716112554, 0)
+TextLabel.Size = UDim2.new(0, 417, 0, 30)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "N/A"
+TextLabel.TextColor3 = Color3.fromRGB(2555, 255, 255)
+TextLabel.TextSize = 25.000
+
+pcall(function()
+while wait() do
+    TextLabel.Text = tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+end
+end)
+
+
+
